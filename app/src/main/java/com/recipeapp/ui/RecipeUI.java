@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import com.recipeapp.datahandler.IDataHandlerable;
+import com.recipeapp.model.Ingredient;
 import com.recipeapp.model.Recipe;
 
 public class RecipeUI {
@@ -40,6 +41,7 @@ public class RecipeUI {
                     displayRecipes();
                         break;
                     case "2":
+                    addNewRecipe();
                         break;
                     case "3":
                         break;
@@ -64,16 +66,36 @@ public class RecipeUI {
 
             if (recipes == null|| recipes.isEmpty()) {
                 System.out.println("No recipes available.");
-            }
+            } else {
+                for (Recipe recipe : recipes) {
+                    System.out.println("-----------------------------------");
+                    System.out.println("Recipe Name: " + recipe.getName());
 
-            for (Recipe recipe : recipes) {
-                System.out.println("-----------------------------------");
-                System.out.println("Recipe Name: " + recipe.getName());
-                System.out.println("Main Ingredients: " + recipe.getIngredients());
+                    // カンマ区切り表示
+                    StringDisplay display = new StringDisplay();
+                    for (Ingredient ingredient : recipe.getIngredients()) {
+                        if (display.length() > 0) {
+                            display.
+                        }
+                    }
+                    System.out.println("Main Ingredients: " + recipe.getIngredients());
+                }
             }
         } catch(IOException e) {
             System.out.println("e.getMessage()");
         }
 
     }
+
+    private void addNewRecipe() {
+        // 追記方法
+        /*
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
+            writer.write(contentToWrite);
+
+            writer.newLine();
+
+        } catch (IOException)
+    }*/
+}
 }

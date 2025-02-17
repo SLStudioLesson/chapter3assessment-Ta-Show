@@ -6,11 +6,8 @@ public class Recipe {
     private String name;
     private ArrayList<Ingredient> ingredients;
 
-    public Recipe(String name) {
+    public Recipe(String name, ArrayList<Ingredient> ingredients) {
         this.name = name;
-    }
-
-    public Recipe(ArrayList<Ingredient>  ingredients) {
         this.ingredients = ingredients;
     }
 

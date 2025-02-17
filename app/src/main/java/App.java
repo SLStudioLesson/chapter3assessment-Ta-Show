@@ -19,23 +19,23 @@ public class App {
             System.out.print("Select (1/2): ");
             String choice = reader.readLine();
 
-            IDataHandlerable data;
+            IDataHandlerable dataHandler;
 
             // 1を選択した場合
             if ("1".equals(choice)) {
                 // CSVDataHandlerインスタンスを生成
-                data = new CSVDataHandler();
+                dataHandler = new CSVDataHandler();
             // 2を選択した場合
             } else if ("2".equals(choice)) {
                 // JSONDataHandlerインスタンスを生成
-                data = new JSONDataHandler();
+                dataHandler = new JSONDataHandler();
             // 1,2以外の不正な値を入力した場合
             } else {
                 // CSVDataHandlerインスタンスを生成
-                data = new CSVDataHandler();
+                dataHandler = new CSVDataHandler();
             }
 
-            RecipeUI recipeUI = new RecipeUI(data);
+            RecipeUI recipeUI = new RecipeUI(dataHandler);
             recipeUI.displayMenu();
             
 
