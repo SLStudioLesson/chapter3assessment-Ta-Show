@@ -17,7 +17,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.recipeapp.datahandler.DataHandler;
+import com.recipeapp.datahandler.CSVDataHandler;
 import com.recipeapp.model.Ingredient;
 import com.recipeapp.model.Recipe;
 
@@ -27,7 +27,7 @@ public class RecipeUITest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
     @Mock
-    private DataHandler mockDataHandler;
+    private CSVDataHandler mockDataHandler;
 
     @BeforeEach
     public void setUp() {
