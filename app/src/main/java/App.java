@@ -7,7 +7,6 @@ import com.recipeapp.datahandler.JSONDataHandler;
 import com.recipeapp.ui.RecipeUI;
 
 public class App {
-
     public static void main(String[] args) {
         // ユーザーからの入力により、CSVDataHandlerまたはJSONDataHandlerのインスタンスを作成
         // RecipeUIに渡してdisplayMenuメソッドを呼びだし、メインメニューを表示する

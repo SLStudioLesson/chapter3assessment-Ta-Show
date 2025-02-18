@@ -45,6 +45,7 @@ public class CSVDataHandler implements IDataHandlerable {
                     recipes.add(new Recipe(recipeName, ingredients));
                 }
             }
+            reader.close();
         } catch (IOException e) {
             e.getMessage();
         }
@@ -52,12 +53,15 @@ public class CSVDataHandler implements IDataHandlerable {
     }
 
     @Override
-    public void writeData(Recipe recipe) {
-        try {
-            // 書き込み定義
-            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
+    public void writeData(Recipe recipe) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
             // レシピ名をCSVへ入力
             writer.write(recipe.getName() + ",");
+            for (Ingredient ingredient : recipe.getIngredients()) {
+                writer.write(ingredient.getName() + ",");
+            }
+            // 改行
+            writer.newLine();
 
         } catch (IOException e) {
             e.printStackTrace();
