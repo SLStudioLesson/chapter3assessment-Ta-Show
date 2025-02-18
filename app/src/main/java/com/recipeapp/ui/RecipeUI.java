@@ -72,13 +72,15 @@ public class RecipeUI {
                     System.out.println("Recipe Name: " + recipe.getName());
 
                     // カンマ区切り表示
-                    StringDisplay display = new StringDisplay();
-                    for (Ingredient ingredient : recipe.getIngredients()) {
-                        if (display.length() > 0) {
-                            display.
-                        }
+                    ArrayList<Ingredient> ingredients = recipe.getIngredients();
+                    ArrayList<String>  ingredientNames = new ArrayList<>();
+                    for (Ingredient ingredient : ingredients) {
+                        ingredientNames.add(ingredient.getName());
                     }
-                    System.out.println("Main Ingredients: " + recipe.getIngredients());
+
+                    String ingredientsString = String.join(", ", ingredientNames);
+
+                    System.out.println("Main Ingredients: " + ingredientsString);
                 }
             }
         } catch(IOException e) {
@@ -88,14 +90,30 @@ public class RecipeUI {
     }
 
     private void addNewRecipe() {
-        // 追記方法
-        /*
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
-            writer.write(contentToWrite);
+        // 追記
+        try {
+            System.out.println("Adding a new recipe.");
+            System.out.print("Enter recipe name: ");
+            String recipeName = reader.readLine();
+            System.out.println("Enter ingredients (type 'done' when finished): ");
+            // Ingredient型のArrayListに格納。可変。
+            ArrayList<Ingredient> ingredients = new ArrayList<>();
+            while (true) {
+                System.out.print("Ingredient: ");
+                String ingredientsName = reader.readLine();
+                if (ingredientsName.equals("done")) {
+                    break;
+                }
+            ingredients.add(new Ingredient(ingredientsName));
+            }
+            Recipe newRecipe = new Recipe(recipeName, ingredients);
 
-            writer.newLine();
+            dataHandler.writeData(newRecipe);
 
-        } catch (IOException)
-    }*/
-}
+            System.out.println("Recipe added successfully.");
+
+        } catch (IOException e) {
+            System.out.println("Failed to add new recipe: " + e.getMessage());
+        }
+    }
 }

@@ -1,7 +1,9 @@
 package com.recipeapp.datahandler;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -39,8 +41,8 @@ public class CSVDataHandler implements IDataHandlerable {
                     ArrayList<Ingredient> ingredients = new ArrayList<>();
                     for (String ingredient : ingredientsList) {
                         ingredients.add(new Ingredient(ingredient));
-                        recipes.add(new Recipe(recipeName, ingredients));
                     }
+                    recipes.add(new Recipe(recipeName, ingredients));
                 }
             }
         } catch (IOException e) {
@@ -51,7 +53,15 @@ public class CSVDataHandler implements IDataHandlerable {
 
     @Override
     public void writeData(Recipe recipe) {
+        try {
+            // 書き込み定義
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
+            // レシピ名をCSVへ入力
+            writer.write(recipe.getName() + ",");
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
